@@ -1,5 +1,5 @@
-import xlsxwriter, boto3, datetime
-
+import xlsxwriter, boto3, datetime, os
+S3_bucket = os.environ.get('s3_bucket')
 
 regions = ['us-east-1', 'us-east-2']
 
@@ -202,7 +202,7 @@ def lambda_handler(event=None, context=None):
 
     def upload_file():
         s3_client = boto3.resource('s3')
-        s3_client.Bucket('fas-test-inventory').upload_file(Filename=f'/tmp/AWS_Resources_list_{today}.xlsx',
+        s3_client.Bucket(S3_bucket).upload_file(Filename=f'/tmp/AWS_Resources_list_{today}.xlsx',
                                                                     Key=f'resources/AWS_Resources_list_{today}.xlsx')
         print("______Uploaded file to s3 bucket: ahad-test-3______")
 

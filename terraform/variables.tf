@@ -17,9 +17,9 @@ variable "master_role_name" {
 }
 
 variable "regions" {
-  type        = string
+  type        = list
   description = "(optional) Comma delimited list of AWS regions to inventory"
-  default     = "us-east-1,us-east-2,us-west-1,us-west-2"
+  default     = ['us-east-1','us-east-2','us-west-1','us-west-2']
 }
 
 variable "appenv" {
